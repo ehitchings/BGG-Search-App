@@ -1,0 +1,43 @@
+<ion-view view-title="Search">
+  <ion-content ng-controller="SearchCtrl">
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="enter game to search" ng-model="search.toFind" />
+          <button class="button button-royal" on-tap="searchForID()">
+          Search
+        </button>
+        <!-- <input type="text" placeholder="enter todo item"  ng-model="todoModel.todo" /> -->
+      </label>
+      </div>
+    </div>
+    <ion-list>
+    <!-- <ion-item ng-repeat='thing in game.items' ng-model="gameId.gameId" href="#/tab/detail/{{thing.objectid}}"> -->
+        <ion-item ng-repeat='thing in game.items'>
+        <h2>{{thing.name}}</h2>
+
+      <ion-option-button class='button-assertive' on-tap='getDetails(thing.objectid)'>Get Details</ion-option-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- <ul class="list">
+      <li class="item" ng-repeat='thing in game.items'>
+        {{thing.name}}
+      </li>
+    </ul> -->
+  </ion-content>
+  <!-- <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i> -->
+<!--
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button> -->
+      <!-- </ion-item>
+    </ion-list>
+  </ion-content> -->
+</ion-view>
