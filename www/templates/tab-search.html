@@ -3,12 +3,13 @@
     <div class="list">
       <div class="item item-input-inset">
         <label class="item-input-wrapper">
-          <input type="text" placeholder="enter game to search" ng-model="search.toFind" />
+          <input type="text" placeholder="enter game to search" ng-model="search.toFind" ng-enter="searchForID()" />
+          </label>
           <button class="button button-royal" on-tap="searchForID()">
           Search
         </button>
         <!-- <input type="text" placeholder="enter todo item"  ng-model="todoModel.todo" /> -->
-      </label>
+
       </div>
     </div>
     <ion-list>

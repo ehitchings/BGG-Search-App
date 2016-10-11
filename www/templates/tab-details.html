@@ -6,18 +6,24 @@
 -->
 <ion-view cache-view="false" view-title="{{gameDetails.name}}">
   <ion-content ng-controller="GameDetailCtrl"  class="padding">
-    <img ng-src="{{gameDetails.image}}" style="width: 256px; height: 384px" alt="No image available!">
+
+    <!-- Images don't load fast enough on mobile -->
+    <!-- <img ng-src="{{gameDetails.image}}" alt="No image available!"> -->
     <h4>Gameplay mechanics:</h4>
     <div ng-repeat="mechanic in gameDetails.mechanics">
       <h5>{{mechanic}}</h5>
     </div>
     <div>Players: {{gameDetails.minPlayers}} - {{gameDetails.maxPlayers}}</div>
     <div>Playing Time: {{gameDetails.playingTime}}</div>
-    <h6>Deisgner(s):</h6>
+    <h6>Designer(s):</h6>
     <div ng-repeat='designer in gameDetails.designers'>
       <h6>{{designer}}</h6>
+    </div>
     <p>
       {{gameDetails.description}}
     </p>
+    <h6>Expansions:</h6>
+    <div ng-repeat='exp in gameDetails.expansions'>
+      <h6>{{exp.name}}</h6>
   </ion-content>
 </ion-view>

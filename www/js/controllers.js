@@ -14,8 +14,11 @@ angular.module('starter.controllers', [])
 
   console.log($scope.search.toFind);
   var noSpace = $scope.search.toFind.replace(" ", "%20");
-  var base = "https://api.geekdo.com/api/geekitems?search=";
-  var end = "&showcount=10&nosession=1&ajax=1&objecttype=thing";
+  var base = "https://api.geekdo.com/geeksearch.php?action=search&advsearch=1&objecttype=boardgame&q=";
+  var end = "&include%5Bdesignerid%5D=&geekitemname=&include%5Bpublisherid%5D=&geekitemname=&range%5Byearpublished%5D%5Bmin%5D=&range%5Byearpublished%5D%5Bmax%5D=&range%5Bminage%5D%5Bmax%5D=&floatrange%5Bavgrating%5D%5Bmin%5D=&floatrange%5Bavgrating%5D%5Bmax%5D=&range%5Bnumvoters%5D%5Bmin%5D=&floatrange%5Bavgweight%5D%5Bmin%5D=&floatrange%5Bavgweight%5D%5Bmax%5D=&range%5Bnumweights%5D%5Bmin%5D=&colfiltertype=&searchuser=&nosubtypes%5B%5D=boardgameexpansion&range%5Bminplayers%5D%5Bmax%5D=&range%5Bmaxplayers%5D%5Bmin%5D=&playerrangetype=normal&range%5Bleastplaytime%5D%5Bmin%5D=&range%5Bplaytime%5D%5Bmax%5D=&B1=Submit";
+  //REPLACE THE ABOVE WITH THESE TWO LINES TO INCLUDE EXPANSIONS IN SEARCHES
+  //var base = "https://api.geekdo.com/api/geekitems?search=";
+  //var end = "&showcount=10&nosession=1&ajax=1&objecttype=thing";
   var full = base + noSpace + end;
   $http.get(full).then(function(response){
     var gameData = response.data;
@@ -50,6 +53,7 @@ angular.module('starter.controllers', [])
       $scope.gameDetails = response.data;
       console.log($scope.gameDetails);
       $scope.gameDetails.description = $scope.gameDetails.description.replace(/(&#10;)/g, '\t');
+      $scope.gameDetails.description = $scope.gameDetails.description.replace(/(&amp;)/g, '&');
       //$scope.game= gameId.game[$stateParams.objectid];
     });
     console.log("end request");
