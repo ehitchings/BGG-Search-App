@@ -1,1 +1,12 @@
 /* Empty. Add your own CSS if you like */
+.title1{
+  text-align: center;
+}
+
+.needBreaks{
+  white-space: pre-line;
+}
+
+.view-title{
+  text-align: center;
+}

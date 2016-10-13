@@ -19,11 +19,12 @@
     <div ng-repeat='designer in gameDetails.designers'>
       <h6>{{designer}}</h6>
     </div>
-    <p>
-      {{gameDetails.description}}
-    </p>
+    <!-- <pre> -->
+      <div class='needBreaks'>
+        {{gameDetails.description}}
+    </div>
+  <!-- </pre> -->
     <h6>Expansions:</h6>
-    <div ng-repeat='exp in gameDetails.expansions'>
-      <h6>{{exp.name}}</h6>
+      <h6 ng-repeat='exp in gameDetails.expansions'>{{exp.name}}</h6>
   </ion-content>
 </ion-view>

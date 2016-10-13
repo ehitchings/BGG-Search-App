@@ -1,8 +1,8 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngSanitize'])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('SearchCtrl', function($scope, $http, gameId, $location) {
+.controller('SearchCtrl', function($scope, $http, gameId, $location, $ionicListDelegate ) {
   $scope.idToSearch = '';
   $scope.search = {
     toFind: ''
@@ -32,7 +32,7 @@ angular.module('starter.controllers', [])
   $scope.getDetails = function(objectid){
     //$scope.idToSearch = objectid;
     gameId.gameID = objectid;
-
+    $ionicListDelegate.closeOptionButtons();
     console.log(objectid);
     //$state.go("tab.detail");
     $location.path("/tab/details")
@@ -52,8 +52,9 @@ angular.module('starter.controllers', [])
     $http.get(full).then(function(response){
       $scope.gameDetails = response.data;
       console.log($scope.gameDetails);
-      $scope.gameDetails.description = $scope.gameDetails.description.replace(/(&#10;)/g, '\t');
+      $scope.gameDetails.description = $scope.gameDetails.description.replace(/(&#10;)/g, '\n');
       $scope.gameDetails.description = $scope.gameDetails.description.replace(/(&amp;)/g, '&');
+      $scope.gameDetails.description = $scope.gameDetails.description.replace(/(&quot;)/g, '"');
       //$scope.game= gameId.game[$stateParams.objectid];
     });
     console.log("end request");
